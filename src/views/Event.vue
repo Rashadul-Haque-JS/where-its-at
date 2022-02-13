@@ -14,18 +14,19 @@
         <p class="place">@{{ event.where }}</p>
       </section>
       <section class="ticket-price">
-        <h2>{{total}}Sek</h2>
+        <h2>{{total}}&nbsp; sek</h2>
         <div class="actions">
-          <button @click="decrease"><img src="@/assets/decrease.svg" alt="Minus sign" /></button>
-          <span>{{ tickets }}</span>
-          <button @click="increase">
+          <button @click="decrease" >
+            <img src="@/assets/decrease.svg" alt="Minus sign" /></button>
+          <span >{{ tickets }}</span>
+          <button @click="increase" >
             <img src="@/assets/increase.svg" alt="Plus sign" />
           </button>
         </div>
       </section>
     </main>
     <footer>
-      <button>Lägg i varukorgen</button>
+      <button @click="addToOrder">Lägg i varukorgen</button>
     </footer>
   </div>
 </template>
@@ -49,11 +50,15 @@ export default {
 
   methods:{
     increase(){
-      this.$store.dispatch('incrTicket')
+      this.$store.dispatch('incrTicket',this.event)
     },
 
     decrease(){
-      this.$store.dispatch('decrTicket')
+      this.$store.dispatch('decrTicket',this.event)
+    },
+
+    addToOrder(){
+      this.$store.dispatch('addOrder', this.event)
     }
   }
 };
@@ -130,6 +135,7 @@ export default {
       width: 230px;
       height: 130px;
       border: 1px solid #f56b9a;
+      font-family: 'Fira Sans', sans-serif;
 
       h2 {
         font-weight: bold;
@@ -194,6 +200,7 @@ export default {
       background: #37aeab;
       border-radius: 3px;
       margin-top: 92px;
+      cursor: pointer;
     }
   }
 }

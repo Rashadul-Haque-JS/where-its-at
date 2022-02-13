@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.svg" />
-    <section>
+    <router-link to='/events'>
       <h1>Where It's @</h1>
       <p>Ticketing made easy</p>
-    </section>
+    </router-link>
   </div>
 </template>
 <script>
@@ -18,9 +18,10 @@ export default {};
   align-items: center;
   height: 600px;
 
-  section {
+  a {
     width: 282px;
     height: 122px;
+    text-decoration: none;
 
     h1 {
       width: 282px;

@@ -9,27 +9,40 @@ export default new Vuex.Store({
     events: { ...Events },
     numOfTickets:0,
     order: [],
+    
   },
   mutations: {
-    incrTicket(state) {
+    incrTicket(state,payload) {
       state.numOfTickets++
+      payload.number = state.numOfTickets
     },
 
-    decrTicket(state) {
+    decrTicket(state,payload) {
       if (state.numOfTickets > 0) {
         state.numOfTickets--
+        payload.number = state.numOfTickets
       }
       
-    }
+    },
+    addOrder(state,payload) {
+     state.order.push(payload)
+   }
   },
   actions: {
-    incrTicket(context) {
-      context.commit('incrTicket')
+    incrTicket(context,payload) {
+      context.commit('incrTicket',payload)
     },
 
-    decrTicket(context) {
-      context.commit('decrTicket')
-    }
+    decrTicket(context, payload) {
+      context.commit('decrTicket',payload)
+    },
+
+    addOrder(context, payload) {
+      if (!context.state.order.includes(payload)) {
+        context.commit("addOrder", payload)
+      } else { alert('This item already in the cart!') }
+
+    },
 
   },
 
