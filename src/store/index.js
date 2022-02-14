@@ -15,26 +15,28 @@ export default new Vuex.Store({
   },
   mutations: {
     incrTicket(state, payload) {
-      let key;
+      let key = 'number';
       state.numOfTickets++
-      payload[key] = 'number'
-      payload[key] = 'totalPrice'
-      payload.number = state.numOfTickets
-      payload.totalPrice = payload.price * payload.number
-      delete payload.undefined
+      
+      setTimeout(() => {
+        payload[key] = 1;
+        payload.number = state.numOfTickets;
+      }, 100);
+
     },
 
 
 
     decrTicket(state, payload) {
-      let key;
+      let key = 'number'
       if (state.numOfTickets > 1) {
         state.numOfTickets--
-        payload[key] = 'number'
-        payload[key] = 'totalPrice'
-        payload.number = state.numOfTickets
-        payload.totalPrice = payload.price * payload.number
-        delete payload.undefined
+
+        setTimeout(() => {
+          payload[key] = 'number';
+          payload.number = state.numOfTickets
+        }, 100);
+
       }
 
     },
@@ -70,7 +72,7 @@ export default new Vuex.Store({
     totalSum(state) {
       let total = 0;
       state.order.forEach(element => {
-        total += element.totalPrice
+        total += element.price * element.number
       })
       return total
     }
