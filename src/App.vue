@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav" v-if="['Home', 'Events'].includes($route.name)" >
+    <div id="nav" v-if="['Home', 'Events'].includes($route.name)">
       <router-link to="/"></router-link>
       <router-link to="/Events"></router-link>
       <router-link to="/Order"></router-link>
@@ -9,22 +9,15 @@
   </div>
 </template>
 <script>
-export default {
-
-  computed:{
-    isPage(){
-      return this.$store.state.navTrue
-    }
-  }
-};
+export default {};
 </script>
 
 <style lang="scss" >
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&family=Sansita:ital,wght@1,400;1,700&display=swap");
 
-:root{
-  --headline-font: 'Sansita', sans-serif;
-  --others-font: 'Fira Sans', sans-serif;
+:root {
+  --headline-font: "Sansita", sans-serif;
+  --others-font: "Fira Sans", sans-serif;
 }
 
 html body {
