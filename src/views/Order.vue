@@ -12,7 +12,7 @@
 
       <article v-if="orders.length" class="order-price">
         <p>Totalt värde på order</p>
-        <h2>1020</h2>
+        <h2>{{summation}}</h2>
       </article>
     </main>
     <footer>
@@ -29,6 +29,10 @@ export default {
     orders() {
       return this.$store.state.order;
     },
+
+    summation(){
+        return this.$store.getters.totalSum;
+    }
   },
 };
 </script>

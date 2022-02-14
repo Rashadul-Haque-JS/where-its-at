@@ -7,25 +7,30 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     events: { ...Events },
-    numOfTickets:0,
+    numOfTickets:1,
     order: [],
     
   },
   mutations: {
-    incrTicket(state,payload) {
+    incrTicket(state, payload) {
+      let key;
       state.numOfTickets++
+      payload[key] = 'number'
+      payload[key] = 'totalPrice'
       payload.number = state.numOfTickets
+      payload.totalPrice = payload.price * payload.number
     },
 
     decrTicket(state,payload) {
-      if (state.numOfTickets > 0) {
+      if (state.numOfTickets > 1) {
         state.numOfTickets--
         payload.number = state.numOfTickets
       }
       
     },
     addOrder(state,payload) {
-     state.order.push(payload)
+      state.order.push(payload)
+      state.numOfTickets = 1
    }
   },
   actions: {
@@ -47,8 +52,18 @@ export default new Vuex.Store({
   },
 
   getters:{
-    allEvents: (state) => state.events.events
+    allEvents: (state) => state.events.events,
+
+    totalSum(state) { 
+      let total = 0;
+      state.order.forEach(element => {
+        total += element.totalPrice
+      })
+      return total
+    }
   },
+
+  
 
   modules: {
   }
