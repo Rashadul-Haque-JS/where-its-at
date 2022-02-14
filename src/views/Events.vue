@@ -6,10 +6,10 @@
         type="text"
         id="search"
         name="search"
-        placeholder="👀"
+        
       />
     </section>
-    <router-link
+    <router-link 
       :to="'/events/' + event.id"
       v-for="event in events"
       :key="event.name"
@@ -22,12 +22,20 @@
 <script>
 import EventModelView from "../components/EventModelView.vue";
 export default {
+
+  data(){
+    return{
+      image:'require("../assets/search.svg")'
+    }
+  },
   components: { EventModelView },
   computed: {
     events() {
       return this.$store.getters.allEvents;
     },
   },
+
+ 
 };
 </script>
 
@@ -59,6 +67,8 @@ export default {
      border: none;
       text-indent: 20px;
     }
+
+    
   }
   a{
     display: flex;

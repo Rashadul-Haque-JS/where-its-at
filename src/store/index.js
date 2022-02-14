@@ -7,9 +7,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     events: { ...Events },
-    numOfTickets:1,
+    numOfTickets: 1,
     order: [],
-    
+
+
+
   },
   mutations: {
     incrTicket(state, payload) {
@@ -19,27 +21,36 @@ export default new Vuex.Store({
       payload[key] = 'totalPrice'
       payload.number = state.numOfTickets
       payload.totalPrice = payload.price * payload.number
+      delete payload.undefined
     },
 
-    decrTicket(state,payload) {
+
+
+    decrTicket(state, payload) {
+      let key;
       if (state.numOfTickets > 1) {
         state.numOfTickets--
+        payload[key] = 'number'
+        payload[key] = 'totalPrice'
         payload.number = state.numOfTickets
+        payload.totalPrice = payload.price * payload.number
+        delete payload.undefined
       }
-      
+
     },
-    addOrder(state,payload) {
+    addOrder(state, payload) {
       state.order.push(payload)
       state.numOfTickets = 1
-   }
+    }
   },
   actions: {
-    incrTicket(context,payload) {
-      context.commit('incrTicket',payload)
+    incrTicket(context, payload) {
+      context.commit('incrTicket', payload)
     },
 
+
     decrTicket(context, payload) {
-      context.commit('decrTicket',payload)
+      context.commit('decrTicket', payload)
     },
 
     addOrder(context, payload) {
@@ -51,10 +62,12 @@ export default new Vuex.Store({
 
   },
 
-  getters:{
+  getters: {
     allEvents: (state) => state.events.events,
 
-    totalSum(state) { 
+    allOrders: (state) => state.order,
+
+    totalSum(state) {
       let total = 0;
       state.order.forEach(element => {
         total += element.totalPrice
@@ -63,7 +76,7 @@ export default new Vuex.Store({
     }
   },
 
-  
+
 
   modules: {
   }

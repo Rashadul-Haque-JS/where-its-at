@@ -9,11 +9,11 @@
     </div>
 
     <div class="actions">
-      <button @click="decrease">
+      <button @click="decreaseNum">
         <img src="@/assets/decrease.svg" alt="Minus sign" />
       </button>
       <span>{{ order.number }}</span>
-      <button @click="increase">
+      <button @click="increaseNum">
         <img src="@/assets/increase.svg" alt="Plus sign" />
       </button>
     </div>
@@ -22,24 +22,18 @@
 
 <script>
 export default {
-    props:{order:Object},
-    computed:{
-        
+  props: { order: Object },
+  computed: {},
 
-    total(){
-      return this.order.price * this.tickets
-    }
+  methods: {
+    increaseNum() {
+      this.order.number++;
     },
 
-    methods:{
-         increase(){
-      this.$store.dispatch('incrTicket')
+    decreaseNum() {
+      this.order.number > 1 ? this.order.number-- : ''
     },
-
-    decrease(){
-      this.$store.dispatch('decrTicket')
-    }
-    }
+  },
 };
 </script>
 
@@ -54,7 +48,6 @@ export default {
   .order-info {
     width: 290px;
     height: 56px;
-    
 
     h2 {
       font-family: "Sansita", sans-serif;
@@ -70,13 +63,13 @@ export default {
     }
 
     p {
-      font-family: 'Fira Sans', sans-serif;
+      font-family: "Fira Sans", sans-serif;
       font-style: normal;
       font-weight: normal;
       font-size: 14px;
       line-height: 17px;
-  
-    text-align: start;
+
+      text-align: start;
 
       color: #37aeab;
       margin: 1px 0px 4px 2px;
@@ -84,7 +77,7 @@ export default {
   }
 
   .actions {
-    width:100%;
+    width: 100%;
 
     height: 32px;
     display: flex;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div id="nav" v-if="['Home', 'Events'].includes($route.name)" >
       <router-link to="/"></router-link>
       <router-link to="/Events"></router-link>
       <router-link to="/Order"></router-link>
@@ -9,7 +9,14 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+
+  computed:{
+    isPage(){
+      return this.$store.state.navTrue
+    }
+  }
+};
 </script>
 
 <style lang="scss" >

@@ -1,5 +1,10 @@
 <template>
   <div class="single-event">
+    <nav class="nav">
+      <router-link to="/"></router-link>
+      <router-link to="/Events"></router-link>
+      <router-link to="/Order"></router-link>
+    </nav>
     <header>
       <h1>Event</h1>
       <p>You are are abpout to score some tickets to</p>
@@ -45,7 +50,9 @@ export default {
 
     total(){
       return this.event.price * this.tickets
-    }
+    },
+
+   
   },
 
   methods:{
@@ -69,6 +76,29 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+
+  .nav {
+      width: 100%;
+      height: 8px;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+
+      bottom: -16px;
+
+      a {
+        width: 8px;
+        height: 8px;
+        margin: 0px 4px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 100%;
+
+        &.router-link-exact-active {
+          color: #ffffff;
+        }
+      }
+    }
   header {
     h1 {
       font-family: "Sansita", sans-serif;

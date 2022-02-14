@@ -12,27 +12,30 @@
 
       <article v-if="orders.length" class="order-price">
         <p>Totalt värde på order</p>
-        <h2>{{summation}}</h2>
+        <h2>{{ summation }}</h2>
       </article>
     </main>
     <footer>
       <button>Sicka Order</button>
     </footer>
+    <nav class="nav">
+      <router-link to="/"></router-link>
+      <router-link to="/Events"></router-link>
+      <router-link to="/Order"></router-link>
+    </nav>
   </div>
 </template>
 
 <script>
 import OrderModel from "../components/OrderModelView.vue";
+import { mapGetters } from "vuex";
 export default {
   components: { OrderModel },
   computed: {
-    orders() {
-      return this.$store.state.order;
-    },
-
-    summation(){
-        return this.$store.getters.totalSum;
-    }
+    ...mapGetters({
+      orders: "allOrders",
+      summation: "totalSum",
+    }),
   },
 };
 </script>
@@ -112,7 +115,7 @@ export default {
   }
 
   footer {
-    margin-top: 20px;
+    margin-top: 8px;
     button {
       width: 310px;
       height: 60px;
@@ -130,5 +133,27 @@ export default {
       cursor: pointer;
     }
   }
+
+  .nav {
+      width: 100%;
+      height: 8px;
+      display: flex;
+      justify-content: center;
+      position: absolute;
+
+      bottom: 12px;
+
+      a {
+        width: 8px;
+        height: 8px;
+        margin: 0px 4px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 100%;
+
+        &.router-link-exact-active {
+          color: #ffffff;
+        }
+      }
+    }
 }
 </style>
