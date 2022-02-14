@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     events: { ...Events },
-    numOfTickets: 1,
+    numOfTickets: 0,
     order: [],
 
 
@@ -17,7 +17,7 @@ export default new Vuex.Store({
     incrTicket(state, payload) {
       let key = 'number';
       state.numOfTickets++
-      
+
       setTimeout(() => {
         payload[key] = 1;
         payload.number = state.numOfTickets;
@@ -29,7 +29,7 @@ export default new Vuex.Store({
 
     decrTicket(state, payload) {
       let key = 'number'
-      if (state.numOfTickets > 1) {
+      if (state.numOfTickets > 0) {
         state.numOfTickets--
 
         setTimeout(() => {
@@ -41,8 +41,9 @@ export default new Vuex.Store({
 
     },
     addOrder(state, payload) {
+    
       state.order.push(payload)
-      state.numOfTickets = 1
+      // state.numOfTickets = 1
     }
   },
   actions: {

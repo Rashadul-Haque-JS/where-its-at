@@ -3,7 +3,7 @@
     <div class="order-info">
       <h2>{{ order.name }}&nbsp; sek</h2>
       <p class="date">
-        <span>{{ order.date }}</span> kl.
+        <span>{{ order.when.date }}</span> kl.
         <span>{{ order.when.from }}-{{ order.when.to }}</span>
       </p>
     </div>

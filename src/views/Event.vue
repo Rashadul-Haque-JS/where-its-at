@@ -13,25 +13,29 @@
       <section class="date-time-place">
         <h1>{{ event.name }}</h1>
         <p class="date">
-          <span>{{ event.date }}</span> kl.
+          <span>{{ event.when.date }}</span> kl.
           <span>{{ event.when.from }}-{{ event.when.to }}</span>
         </p>
         <p class="place">@{{ event.where }}</p>
       </section>
       <section class="ticket-price">
-        <h2>{{total}}&nbsp; sek</h2>
+        <h2>{{ total }}&nbsp; sek</h2>
         <div class="actions">
-          <button @click="decrease" >
-            <img src="@/assets/decrease.svg" alt="Minus sign" /></button>
-          <span >{{ tickets }}</span>
-          <button @click="increase" >
+          <button @click="decrease">
+            <img src="@/assets/decrease.svg" alt="Minus sign" />
+          </button>
+          <span>{{ tickets }}</span>
+          <button @click="increase">
             <img src="@/assets/increase.svg" alt="Plus sign" />
           </button>
         </div>
       </section>
     </main>
     <footer>
-      <button @click="addToOrder">Lägg i varukorgen</button>
+      <span v-if="btnDisable">* Minimum 1 ticket required!</span>
+      <button :disabled="btnDisable" @click="addToOrder">
+        Lägg i varukorgen
+      </button>
     </footer>
   </div>
 </template>
@@ -44,30 +48,32 @@ export default {
         (event) => event.id == this.$route.params.id
       );
     },
-    tickets(){
-      return this.$store.state.numOfTickets
+    tickets() {
+      return this.$store.state.numOfTickets;
     },
 
-    total(){
-      return this.event.price * this.tickets
+    total() {
+      return this.event.price * this.tickets;
     },
 
-   
+    btnDisable() {
+      return this.tickets < 1 ? true : false;
+    },
   },
 
-  methods:{
-    increase(){
-      this.$store.dispatch('incrTicket',this.event)
+  methods: {
+    increase() {
+      this.$store.dispatch("incrTicket", this.event);
     },
 
-    decrease(){
-      this.$store.dispatch('decrTicket',this.event)
+    decrease() {
+      this.$store.dispatch("decrTicket", this.event);
     },
 
-    addToOrder(){
-      this.$store.dispatch('addOrder', this.event)
-    }
-  }
+    addToOrder() {
+      this.$store.dispatch("addOrder", this.event);
+    },
+  },
 };
 </script>
 
@@ -79,26 +85,26 @@ export default {
   position: relative;
 
   .nav {
-      width: 100%;
+    width: 100%;
+    height: 8px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+
+    bottom: -16px;
+
+    a {
+      width: 8px;
       height: 8px;
-      display: flex;
-      justify-content: center;
-      position: absolute;
+      margin: 0px 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 100%;
 
-      bottom: -16px;
-
-      a {
-        width: 8px;
-        height: 8px;
-        margin: 0px 4px;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 100%;
-
-        &.router-link-exact-active {
-          color: #ffffff;
-        }
+      &.router-link-exact-active {
+        color: #ffffff;
       }
     }
+  }
   header {
     h1 {
       font-family: "Sansita", sans-serif;
@@ -165,7 +171,7 @@ export default {
       width: 230px;
       height: 130px;
       border: 1px solid #f56b9a;
-      font-family: 'Fira Sans', sans-serif;
+      font-family: "Fira Sans", sans-serif;
 
       h2 {
         font-weight: bold;
@@ -192,7 +198,7 @@ export default {
           justify-content: center;
           align-items: center;
           background-color: #231f42;
-          border:none;
+          border: none;
 
           img {
             width: 20px;
@@ -208,13 +214,23 @@ export default {
           align-items: center;
           border-left: 1px solid #f56b9a;
           border-right: 1px solid #f56b9a;
-          color:#ffffff;
+          color: #ffffff;
         }
       }
     }
   }
 
   footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 80px;
+    span {
+      color: #e63636;
+      font-size: 0.8rem;
+      text-align: center;
+    }
     button {
       width: 310px;
       height: 60px;
@@ -229,7 +245,7 @@ export default {
 
       background: #37aeab;
       border-radius: 3px;
-      margin-top: 92px;
+      margin-top: 8px;
       cursor: pointer;
     }
   }
