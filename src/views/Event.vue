@@ -33,9 +33,11 @@
     </main>
     <footer>
       <span v-if="btnDisable">* Minimum 1 ticket required!</span>
-      <button :disabled="btnDisable" @click="addToOrder">
-        Lägg i varukorgen
-      </button>
+      <router-link to="/events">
+        <button :disabled="btnDisable" @click="addToOrder">
+          Lägg i varukorgen
+        </button>
+      </router-link>
     </footer>
   </div>
 </template>

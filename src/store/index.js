@@ -9,10 +9,9 @@ export default new Vuex.Store({
     events: { ...Events },
     numOfTickets: 0,
     order: [],
+},
 
 
-
-  },
   mutations: {
     incrTicket(state, payload) {
       let key = 'number';
@@ -33,7 +32,7 @@ export default new Vuex.Store({
         state.numOfTickets--
 
         setTimeout(() => {
-          payload[key] = 'number';
+          payload[key] = 1;
           payload.number = state.numOfTickets
         }, 100);
 
@@ -43,7 +42,7 @@ export default new Vuex.Store({
     addOrder(state, payload) {
     
       state.order.push(payload)
-      // state.numOfTickets = 1
+      // state.numOfTickets = 0
     }
   },
   actions: {

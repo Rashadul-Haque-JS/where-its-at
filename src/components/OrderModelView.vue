@@ -27,11 +27,11 @@ export default {
 
   methods: {
     increaseNum() {
-      this.order.number++;
+      this.$store.dispatch('incrTicket', this.order);
     },
 
     decreaseNum() {
-      this.order.number > 1 ? this.order.number-- : ''
+     this.$store.dispatch('decrTicket', this.order)
     },
   },
 };
