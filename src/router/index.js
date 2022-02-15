@@ -4,6 +4,7 @@ import Home from "../views/Home.vue"
 import Events from "../views/Events.vue"
 import Order from "../views/Order.vue"
 import Event from "../views/Event.vue"
+import Tickets from "../views/Tickets.vue"
 
 
 Vue.use(VueRouter)
@@ -30,8 +31,18 @@ const routes = [
   {
     path: "/Order",
     name: "Order",
-    component: Order
-  }
+    component: Order,
+    children: [{
+      path: "Ticket",
+
+      component: Tickets
+    }]
+
+  },
+
+
+
+
 ]
 
 const router = new VueRouter({

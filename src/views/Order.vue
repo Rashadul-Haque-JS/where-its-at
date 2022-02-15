@@ -15,8 +15,11 @@
         <h2>{{ summation }}</h2>
       </article>
     </main>
+
     <footer>
-      <button>Sicka Order</button>
+      <router-link to="/Order/Ticket">
+        <button>Sicka Order</button>
+      </router-link>
     </footer>
     <nav class="nav">
       <router-link to="/"></router-link>
@@ -135,25 +138,25 @@ export default {
   }
 
   .nav {
-      width: 100%;
+    width: 100%;
+    height: 8px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+
+    bottom: 12px;
+
+    a {
+      width: 8px;
       height: 8px;
-      display: flex;
-      justify-content: center;
-      position: absolute;
+      margin: 0px 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 100%;
 
-      bottom: 12px;
-
-      a {
-        width: 8px;
-        height: 8px;
-        margin: 0px 4px;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 100%;
-
-        &.router-link-exact-active {
-          color: #ffffff;
-        }
+      &.router-link-exact-active {
+        color: #ffffff;
       }
     }
+  }
 }
 </style>

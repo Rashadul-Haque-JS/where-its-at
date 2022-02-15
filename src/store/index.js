@@ -9,7 +9,7 @@ export default new Vuex.Store({
     events: { ...Events },
     numOfTickets: 0,
     order: [],
-},
+  },
 
 
   mutations: {
@@ -40,9 +40,11 @@ export default new Vuex.Store({
 
     },
     addOrder(state, payload) {
-    
-      state.order.push(payload)
-      // state.numOfTickets = 0
+      if (!state.order.includes(payload)) {
+        state.order.push(payload)
+      } else { alert('This item already in the cart!') }
+
+      state.numOfTickets = 0
     }
   },
   actions: {
@@ -56,9 +58,9 @@ export default new Vuex.Store({
     },
 
     addOrder(context, payload) {
-      if (!context.state.order.includes(payload)) {
-        context.commit("addOrder", payload)
-      } else { alert('This item already in the cart!') }
+
+      context.commit("addOrder", payload)
+
 
     },
 
@@ -77,6 +79,7 @@ export default new Vuex.Store({
       return total
     }
   },
+
 
 
 
