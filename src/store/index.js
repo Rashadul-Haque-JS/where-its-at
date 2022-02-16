@@ -14,31 +14,42 @@ export default new Vuex.Store({
 
   mutations: {
     incrTicket(state, payload) {
-      let key = 'number';
       state.numOfTickets++
-
-      setTimeout(() => {
-        payload[key] = 1;
-        payload.number = state.numOfTickets;
-      }, 100);
+      payload.ticketsNumber = state.numOfTickets
 
     },
-
 
 
     decrTicket(state, payload) {
-      let key = 'number'
       if (state.numOfTickets > 0) {
         state.numOfTickets--
+        payload.ticketsNumber = state.numOfTickets
 
-        setTimeout(() => {
-          payload[key] = 1;
-          payload.number = state.numOfTickets
-        }, 100);
 
       }
+    },
+
+    removeOrder(state, payload) {
+      state.order.splice(payload,1)
+    },
+
+
+    changeTicketsPlus(state, payload) {
+      let newArr = state.order.filter((e => e.id == payload.id))
+      newArr[0].ticketsNumber++
+    },
+
+
+    changeTicketsMinus(state, payload) {
+      let newArr = state.order.filter((e => e.id == payload.id))
+      newArr[0].ticketsNumber > 1 ? newArr[0].ticketsNumber-- : ''
+
+
 
     },
+
+
+
     addOrder(state, payload) {
       if (!state.order.includes(payload)) {
         state.order.push(payload)
@@ -47,6 +58,7 @@ export default new Vuex.Store({
       state.numOfTickets = 0
     }
   },
+  //Action.......................................
   actions: {
     incrTicket(context, payload) {
       context.commit('incrTicket', payload)
@@ -57,11 +69,25 @@ export default new Vuex.Store({
       context.commit('decrTicket', payload)
     },
 
+    changeTicketsPlus(context, payload) {
+      context.commit('changeTicketsPlus', payload)
+
+    },
+
+    changeTicketsMinus(context, payload) {
+      context.commit('changeTicketsMinus', payload)
+
+    },
+
     addOrder(context, payload) {
 
       context.commit("addOrder", payload)
 
 
+    },
+
+    removeOrder(context, payload) {
+      context.commit('removeOrder', payload)
     },
 
   },
@@ -74,11 +100,13 @@ export default new Vuex.Store({
     totalSum(state) {
       let total = 0;
       state.order.forEach(element => {
-        total += element.price * element.number
+        total += element.price * element.ticketsNumber
       })
       return total
     }
   },
+
+
 
 
 

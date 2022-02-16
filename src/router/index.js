@@ -32,13 +32,15 @@ const routes = [
     path: "/Order",
     name: "Order",
     component: Order,
-    children: [{
-      path: "Ticket",
-
-      component: Tickets
-    }]
+    
 
   },
+
+  {
+    path: "/Tickets",
+      name: 'Tickets',
+      component: Tickets
+  }
 
 
 

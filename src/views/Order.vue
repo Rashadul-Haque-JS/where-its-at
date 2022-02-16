@@ -6,8 +6,8 @@
     <main>
       <p class="others-info" v-if="!orders.length">No order is placed yet!</p>
 
-      <article class="order-list" v-for="order in orders" :key="order.id">
-        <OrderModel :order="order" />
+      <article class="order-list" v-for="(order,idx ) in orders" :key="order.id" :idx="idx">
+        <OrderModel :order="order" :idx="idx" />
       </article>
 
       <article v-if="orders.length" class="order-price">
@@ -17,7 +17,7 @@
     </main>
 
     <footer>
-      <router-link to="/Order/Ticket">
+      <router-link to="/Tickets">
         <button>Sicka Order</button>
       </router-link>
     </footer>

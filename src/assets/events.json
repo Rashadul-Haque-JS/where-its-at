@@ -8,7 +8,9 @@
 				"date": "21 Mar",
 				"from": "20.00",
 				"to": "22:00"
-			}
+			},
+			"ticketsNumber": 1,
+			"info": "Section A: seat-273, lift near the south gate is closed!"
 		},
 		{	"id":"2",
 			"name": "Pelle trubadur",
@@ -18,7 +20,9 @@
 				"date": "11 Apr",
 				"from": "21.00",
 				"to": "23:00"
-			}
+			},
+			"ticketsNumber": 1,
+			"info": "Section B: seat-320, Door close at 20:30 "
 		},
 		{
 			"id":"3",
@@ -29,7 +33,9 @@
 				"date": "13 Dec",
 				"from": "15.00",
 				"to": "16:00"
-			}
+			},
+			"ticketsNumber": 1,
+			"info": "Section C: seat-233, bring umbrella "
 		},
 		{	"id":"4",
 			"name": "Klubb Untz",
@@ -39,7 +45,9 @@
 				"date": "4 Jul",
 				"from": "20.00",
 				"to": "05:00"
-			}
+			},
+			"ticketsNumber": 1,
+			"info": "Section D: seat-243, Food sevice open whole night! "
 		}
 		
 	]

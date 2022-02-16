@@ -12,27 +12,32 @@
       <button @click="decreaseNum">
         <img src="@/assets/decrease.svg" alt="Minus sign" />
       </button>
-      <span>{{ order.number }}</span>
+      <span>{{ order.ticketsNumber }}</span>
       <button @click="increaseNum">
         <img src="@/assets/increase.svg" alt="Plus sign" />
       </button>
     </div>
+    <img class="remove-order" src="@/assets/delete.svg" alt="delete" @click="deleteIt">
   </div>
 </template>
 
 <script>
 export default {
-  props: { order: Object },
+  props: { order: Object, idx:Number },
   computed: {},
 
   methods: {
     increaseNum() {
-      this.$store.dispatch('incrTicket', this.order);
+      this.$store.dispatch('changeTicketsPlus', this.order);
     },
 
     decreaseNum() {
-     this.$store.dispatch('decrTicket', this.order)
+     this.$store.dispatch('changeTicketsMinus', this.order)
     },
+
+    deleteIt(){
+       this.$store.dispatch('removeOrder',this.idx)
+    }
   },
 };
 </script>
@@ -44,6 +49,7 @@ export default {
   border: 1px solid #f56b9a;
   font-family: "Fira Sans", sans-serif;
   margin-bottom: 24px;
+  position: relative;
 
   .order-info {
     width: 290px;
@@ -108,6 +114,14 @@ export default {
       border-right: 1px solid #f56b9a;
       color: #ffffff;
     }
+  }
+  .remove-order{
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 34px;
+    right: 12px;
+
   }
 }
 </style>
