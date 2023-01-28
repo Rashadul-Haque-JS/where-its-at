@@ -32,6 +32,7 @@ html body {
     position: relative;
     background-color: #231f42;
     margin-top: 48px;
+    padding-bottom:24px;
 
     #nav {
       width: 100%;
@@ -43,8 +44,8 @@ html body {
       bottom: 40px;
 
       a {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
         margin: 0px 4px;
         background: rgba(255, 255, 255, 0.3);
         border-radius: 100%;

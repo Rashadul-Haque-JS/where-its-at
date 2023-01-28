@@ -93,12 +93,12 @@ export default {
     justify-content: center;
     position: absolute;
 
-    bottom: -16px;
+    bottom: -28px;
 
     a {
-      width: 8px;
-      height: 8px;
-      margin: 0px 4px;
+      width: 10px;
+      height: 10px;
+      margin: 0px 6px;
       background: rgba(255, 255, 255, 0.3);
       border-radius: 100%;
 

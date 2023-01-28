@@ -118,7 +118,7 @@ export default {
   }
 
   footer {
-    margin-top: 8px;
+    margin-top: 4px;
     button {
       width: 310px;
       height: 60px;
@@ -147,8 +147,8 @@ export default {
     bottom: 12px;
 
     a {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       margin: 0px 4px;
       background: rgba(255, 255, 255, 0.3);
       border-radius: 100%;
