@@ -7,7 +7,7 @@
     </nav>
     <header>
       <h1>Event</h1>
-      <p>You are are abpout to score some tickets to</p>
+      <p>So spirit so bright, it's generous delight.</p>
     </header>
     <main>
       <section class="date-time-place">

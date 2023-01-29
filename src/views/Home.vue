@@ -1,10 +1,12 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.svg" />
+  <h1 class="title">Sonic Serenity</h1>
+    <img alt="Vue logo" src="../assets/where-e.png" />
     <router-link to='/events'>
       <h1>Where It's @</h1>
       <p>Ticketing made easy</p>
     </router-link>
+    
   </div>
 </template>
 <script>
@@ -18,6 +20,20 @@ export default {};
   align-items: center;
   height: 600px;
 
+
+
+  .title{
+  width: 282px;
+      font-family: 'Sansita', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 37px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.8);
+      transform: translateY(-24px);
+  }
+
   a {
     width: 282px;
     height: 122px;
@@ -28,7 +44,7 @@ export default {};
       font-family: 'Sansita', sans-serif;
       font-style: normal;
       font-weight: 700;
-      font-size: 32px;
+      font-size: 28px;
       line-height: 37px;
       text-align: center;
       margin: 16px 0px 0px 0px;
@@ -46,7 +62,7 @@ export default {};
       letter-spacing: 0em;
       text-align: center;
       margin: 16px 0px 0px 0px;
-      color: #fff;
+      color: rgba(255, 255, 255, 0.8);;
     }
   }
 }

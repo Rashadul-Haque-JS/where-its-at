@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <div id="nav" v-if="['Home', 'Events'].includes($route.name)">
-      <router-link to="/"></router-link>
-      <router-link to="/Events"></router-link>
-      <router-link to="/Order"></router-link>
-      <router-link to="/Tickets"></router-link>
+      <router-link to="/" v-tooltip="'Home'" class="tooltip-color" ></router-link>
+      <router-link to="/Events" v-tooltip="'Events list'" class="tooltip-color"></router-link>
+      <router-link to="/Order" v-tooltip="'Order list'" class="tooltip-color"></router-link>
+      <router-link to="/Tickets" v-tooltip="'Get tickets'" class="tooltip-color"></router-link>
     </div>
     <router-view />
   </div>
+   
 </template>
 <script>
 export default {};
@@ -25,6 +26,7 @@ html body {
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 
   #app {
     width: 375px;
@@ -33,6 +35,7 @@ html body {
     background-color: #231f42;
     margin-top: 48px;
     padding-bottom:24px;
+    border-radius:8px;
 
     #nav {
       width: 100%;
@@ -49,10 +52,7 @@ html body {
         margin: 0px 4px;
         background: rgba(255, 255, 255, 0.3);
         border-radius: 100%;
-
-        &.router-link-exact-active {
-          color: #ffffff;
-        }
+        
       }
     }
   }

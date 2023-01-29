@@ -22,9 +22,9 @@
       </router-link>
     </footer>
     <nav class="nav">
-      <router-link to="/"></router-link>
-      <router-link to="/Events"></router-link>
-      <router-link to="/Order"></router-link>
+      <router-link to="/" v-tooltip="'Home'" class="tooltip-color"></router-link>
+      <router-link to="/Events" v-tooltip="'Events list'" class="tooltip-color"></router-link>
+      <router-link to="/Order" v-tooltip="'Order list'" class="tooltip-color"></router-link>
     </nav>
   </div>
 </template>
