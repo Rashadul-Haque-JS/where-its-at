@@ -253,3 +253,6 @@ export default {
   }
 }
 </style>
+
+// Path: src/views/Events.vue
+
